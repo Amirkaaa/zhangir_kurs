@@ -7,15 +7,26 @@ export default new class AnswerModel {
         const modelName = 'answer';
         const modelOptions = mongoModelOptions(modelName);
         const modelSchema = new mongoose.Schema({
-            text: {
-                type: String,
-                trim: true,
-                required: true,
-                maxlength: 24
+            question: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'question'
             },
+            answer: [{
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'option'
+            }],
             correct: {
                 type: Boolean,
                 default: false
+            },
+            points: {
+                type: Number,
+                min: 0,
+                default: 0,
+            },
+            user: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'user'
             }
         }, modelOptions);
 

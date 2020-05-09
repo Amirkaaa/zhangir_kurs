@@ -13,10 +13,10 @@ export default new class QuizModel {
                 required: true,
                 maxlength: 24
             },
-            correct: {
-                type: Boolean,
-                default: false
-            }
+            questions: [{
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'question'
+            }]
         }, modelOptions);
 
         this.model = mongoose.model(modelName, modelSchema);
@@ -27,7 +27,13 @@ export default new class QuizModel {
     }
 
     list(querystring = {}, sort = {}) {
-        return this.model.find(querystring).sort(sort).exec();
+        return this.model.find(querystring).sort(sort).populate({
+            path: 'questions',
+            populate: {
+                path: 'options',
+                model: 'option'
+            }
+        }).exec();
     }
 
     retrieve(querystring = {}) {

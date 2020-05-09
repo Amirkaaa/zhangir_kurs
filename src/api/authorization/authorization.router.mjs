@@ -12,6 +12,10 @@ router.get('/profile', [
     AuthorizationController.profile
 ]);
 
+router.post('/register', [
+    AuthorizationController.register
+]);
+
 router.post('/login', [
     LoginMiddleware,
     AuthorizationController.login

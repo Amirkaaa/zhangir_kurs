@@ -11,12 +11,17 @@ export default new class QuestionModel {
                 type: String,
                 trim: true,
                 required: true,
-                maxlength: 24
+                maxlength: 64
             },
-            correct: {
-                type: Boolean,
-                default: false
-            }
+            type: {
+                type: String,
+                enum: ['single', 'multiple'],
+                default: 'single'
+            },
+            options: [{
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'options'
+            }]
         }, modelOptions);
 
         this.model = mongoose.model(modelName, modelSchema);
