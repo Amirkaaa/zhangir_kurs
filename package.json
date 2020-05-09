@@ -1,0 +1,26 @@
+{
+  "name": "polls",
+  "version": "1.0.0",
+  "description": "Polls backend with Visible votes and Quiz mode",
+  "main": "src/index.mjs",
+  "scripts": {
+    "start": "nodemon"
+  },
+  "keywords": [],
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemailer": "^6.4.6",
+    "nodemon": "^2.0.2"
+  },
+  "dependencies": {
+    "agenda": "^3.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.8.11",
+    "morgan": "^1.9.1",
+    "multer": "^1.4.2",
+    "socket.io": "^2.3.0"
+  }
+}
